@@ -13,8 +13,8 @@ import loggingMiddleware from "./middleware/logging.middleware.js";
 
 
 // ROUTES
-import messageController from "./domain/message/message.controller.js";
 import skillController from "./domain/skill/skill.controller.js";
+import messageController from "./domain/message/message.controller.js";
 
 
 // INITIALIZE
@@ -31,8 +31,8 @@ app.use(loggingMiddleware);
 
 // ROUTES
 app.get("/", (req, res) => { res.status(200).json({success: true, message: "Wellcome to our API" });})
-app.use("/messages", messageController);
 app.use("/skills", skillController);
+app.use("/messages", messageController);
 app.use("/*", (req, res) => { res.status(404).json({ success: false, message: "not found"});});
 
 
