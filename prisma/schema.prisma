@@ -1,0 +1,20 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Message {
+  id              Int      @id @default(autoincrement())
+  fullname        String
+  email           String
+  message         String   @db.Text
+  status          String   @default("unread")
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@map("messages")
+}
