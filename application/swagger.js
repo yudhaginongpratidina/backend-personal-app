@@ -8,7 +8,7 @@ const options = {
         info: {
             title: 'API DOCUMENTATION',
             version: '1.0.0',
-            description: 'RESTful API for personal app',
+            description: '',
             contact: {
                 name: 'YUDHA GINONG PRATIDINA',
                 url: 'https://github.com/yudhaginongpratidina',
