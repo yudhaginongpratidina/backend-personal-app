@@ -1,3 +1,5 @@
+// GENERATOR CLIENT [https://pris.ly/d/prisma-schema | https://pris.ly/cli/accelerate-init]
+// ========================================================================================
 generator client {
   provider = "prisma-client-js"
 }
@@ -7,35 +9,14 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Skill {
-  id        Int      @id @default(autoincrement())
-  name      String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@map("skills")
-}
-
-
-
-model CategoryProject {
-  id        Int      @id @default(autoincrement())
-  name      String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@map("category_projects")
-}
-
 
 model Message {
-  id        Int      @id @default(autoincrement())
-  fullname  String
+  id        String   @id @default(cuid())
+  fullName  String
   email     String
+  subject   String
   message   String   @db.Text
-  status    String   @default("unread")
+  isRead    Boolean  @default(false)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-
-  @@map("messages")
 }

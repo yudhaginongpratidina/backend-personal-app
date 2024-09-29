@@ -1,0 +1,13 @@
+# FILES
+.doc
+.docs
+.pdf
+.txt
+
+# ARCHIVE
+*.zip
+*.tar
+*.tar.gz
+*.tar.bz2
+*.rar
+*.7z
