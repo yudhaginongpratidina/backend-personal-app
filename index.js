@@ -15,6 +15,7 @@ app.use("/messages", MessageController);
 app.use("/*", (req, res) => { res.status(404).json({ message: "Not Found" }) })
 
 
+
 // START SERVER
 // ===========================================================================
 const APPLICATION_NAME = process.env.APPLICATION_NAME;

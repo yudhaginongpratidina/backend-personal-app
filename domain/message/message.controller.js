@@ -7,7 +7,18 @@ import express from "express";
 
 const router = express.Router();
 
-
+/**
+ * @swagger
+ * /messages:
+ *   get:
+ *     summary: return all message
+ *     tags: [Message]
+ *     responses:
+ *       200:
+ *         description: A successful response
+ *       400:
+ *         description: Bad Request
+ */
 router.get("/", async (req, res) => {
     try {
         const response = await MessageService.getAllMessage();
@@ -21,6 +32,25 @@ router.get("/", async (req, res) => {
 })
 
 
+/**
+ * @swagger
+ * /messages/{id}:
+ *   get:
+ *     summary: return message by id
+ *     tags: [Message]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: message id
+ *     responses:
+ *       200:
+ *         description: A successful response
+ *       400:
+ *         description: Bad Request
+ */
 router.get("/:id", async (req, res) => {
     try {
         const response = await MessageService.getMessageById(req.params.id);
@@ -34,6 +64,33 @@ router.get("/:id", async (req, res) => {
 })
 
 
+/**
+ * @swagger
+ * /messages:
+ *   post:
+ *     summary: create message
+ *     tags: [Message]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               fullName:
+ *                 type: string
+ *               email:
+ *                 type: string
+ *               subject:
+ *                 type: string
+ *               message:
+ *                 type: string
+ *     responses:
+ *       201:
+ *         description: A successful response
+ *       400:
+ *         description: Bad Request
+ */
 router.post("/", async (req, res) => {
     try {
         const response = await MessageService.createMessage(req.body);
@@ -46,7 +103,34 @@ router.post("/", async (req, res) => {
     }
 })
 
-
+/**
+ * @swagger
+ * /messages/{id}:
+ *   patch:
+ *     summary: update status message
+ *     tags: [Message]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: message id
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               isRead:
+ *                 type: boolean
+ *     responses:
+ *       200:
+ *         description: A successful response
+ *       400:
+ *         description: Bad Request
+ */
 router.patch("/:id", async (req, res) => {
     try {
         const response = await MessageService.updateStatusMessageById(req.params.id, req.body.isRead);
@@ -60,6 +144,25 @@ router.patch("/:id", async (req, res) => {
 })
 
 
+/**
+ * @swagger
+ * /messages/{id}:
+ *   delete:
+ *     summary: delete message
+ *     tags: [Message]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: message id
+ *     responses:
+ *       200:
+ *         description: A successful response
+ *       400:
+ *         description: Bad Request
+ */
 router.delete("/:id", async (req, res) => {
     try {
         const response = await MessageService.deleteMessageById(req.params.id);
