@@ -17,8 +17,8 @@ class SkillService {
         return skill
     }
 
-    static async createSkill(name) {
-        const skill = await SkillRepository.create(name);
+    static async createSkill(data) {
+        const skill = await SkillRepository.create(data);
         return skill
     }
 
