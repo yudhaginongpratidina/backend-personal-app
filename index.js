@@ -9,11 +9,13 @@ dotenv.config();
 // DEFINE ROUTES
 // ===========================================================================
 import SkillController from "./domain/skill/skill.controller.js";
+import TechstackController from "./domain/techstack/techstack.controller.js";
 import ProjectController from "./domain/project/project.controller.js";
 import MessageController from "./domain/message/message.controller.js";
 
 app.get("/", (req, res) => { res.status(200).json({ message: "Wellcome to API for Personal App" }) })
 app.use("/skills", SkillController);
+app.use("/techstacks", TechstackController);
 app.use("/projects", ProjectController);
 app.use("/messages", MessageController);
 app.use("/*", (req, res) => { res.status(404).json({ message: "Not Found" }) })

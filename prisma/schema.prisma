@@ -16,6 +16,13 @@ model Skill {
   updatedAt DateTime @updatedAt
 }
 
+model Techstack {
+  id        String   @id @default(cuid())
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
 model Project {
   id             String   @id @default(cuid())
   name           String
